@@ -1,1 +1,8 @@
 <p>menu works!</p>
+
+<ng-container *ngIf="logicaboleana;else nombredearriba"></ng-container>
+
+<ng-template #nombredearriba>
+    <app-formEspecializaicon></app-form>
+</ng-template>
+

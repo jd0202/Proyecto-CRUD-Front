@@ -1,1 +1,39 @@
 <p>form-paciente works!</p>
+
+<form [formGroup]="formPaciente" (ngSubmit)="enviarDatos()">
+    <p>Tipo de documento</p>
+    <input type="text" formControltipoDocumento="tipoDocumento">
+    <p>Numero de documento</p>
+    <input type="text" formControlCedula="cedula">
+    <p>Primer Nombre</p>
+    <input type="text" formControlName="nombre1">
+    <p>Segundo Nombre</p>
+    <input type="text" formControlName="nombre2">
+    <p>Primer Apellido</p>
+    <input type="text" formControlApellido="apellido1">
+    <p>Segundo Apellido</p>
+    <input type="text" formControlApellido="apellido2">
+    <p>Telefono</p>
+    <input type="text" formControlTelefono="telefono">
+    <p>Email</p>
+    <input type="text" formControlEmail="email">
+    <p>Estado civil</p>
+    <input type="text" formControlEstadoCivil="estadoCivil">
+    <p>Grupo Sanguineo</p>
+    <input type="text" formControlGrupoSanguineo="grupoSanguineo">
+    <p>Fecha de Nacimiento</p>
+    <input type="date" formControlFechaNacimiento="fechaNacimiento">
+    <p>Lugar de Nacimiento</p>
+    <input type="text" formControlLugarNacimiento="lugarNacimiento">
+    <p>Religion</p>
+    <input type="text" formControlReligion="religion">
+    <p>Etnia</p>
+    <input type="text" formControlEtnia="etnia">
+    <p>Tipo de poblacion</p>
+    <input type="text" formControlTipoPoblacion="tipoPoblacion">
+    <p>Ocupacion</p>
+    <input type="text" formControlOcupacion="ocupacion">
+    <p>Identidad de Genero</p>
+    <input type="text" formControlIdentidadGenero="identidadGenero">
+    <button [disabled]="formPaciente.invalid">Enviar</button>
+</form>

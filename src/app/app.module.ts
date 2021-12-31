@@ -12,6 +12,12 @@ import { TablaEspecializacionComponent } from './tabla-especializacion/tabla-esp
 import { TablaHistoriaClinicaComponent } from './tabla-historia-clinica/tabla-historia-clinica.component';
 import { TablaPacienteComponent } from './tabla-paciente/tabla-paciente.component';
 import { TablaPeronalMedComponent } from './tabla-peronal-med/tabla-peronal-med.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
+import {TableModule} from 'primeng/table';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +34,12 @@ import { TablaPeronalMedComponent } from './tabla-peronal-med/tabla-peronal-med.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ButtonModule,
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
