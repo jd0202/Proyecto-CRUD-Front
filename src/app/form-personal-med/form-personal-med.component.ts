@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PersonalMed } from '../model/PersonalMed';
+import { PersonalMedService } from '../service/personal-service.service';
+
 
 @Component({
   selector: 'app-form-personal-med',
@@ -8,23 +11,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormPersonalMedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private personalMedService:  PersonalMedService) { }
+
+  public personalMed : PersonalMed = new PersonalMed();
 
   formPersonalMed = new FormGroup({
     cedula: new FormControl('',Validators.required),
     nombre1: new FormControl('',Validators.required),
-    nombre2: new FormControl('',Validators.required),
+    nombre2: new FormControl(''),
     apellido1: new FormControl('',Validators.required),
-    apellido2: new FormControl('',Validators.required),
+    apellido2: new FormControl(''),
     telefono: new FormControl('',Validators.required),
     fechaNacimiento: new FormControl('',Validators.required),
+    especializacionId: new FormControl('',Validators.required)
   })
 
   ngOnInit(): void {
   }
 
   enviarDatos(){
+    this.personalMed.cedula=this.formPersonalMed.get("cedula")?.value;
+    this.personalMed.nombre=this.formPersonalMed.get("nombre1")?.value.concat(" ",this.formPersonalMed.get("nombre2")?.value);
+    this.personalMed.apellido=this.formPersonalMed.get("apellido1")?.value.concat(" ",this.formPersonalMed.get("apellido2")?.value);
+    this.personalMed.telefono=this.formPersonalMed.get("telefono")?.value;
+    this.personalMed.fechaNacimiento=this.formPersonalMed.get("fechaNacimiento")?.value;
+    this.personalMed.especializacionId=this.formPersonalMed.get("especializacionId")?.value;
     
+    this.personalMedService.guardarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
   }
+  
 
 }

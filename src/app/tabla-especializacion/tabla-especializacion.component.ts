@@ -1,4 +1,3 @@
-import { newArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Especializacion } from '../model/Especializacion';
 import { EspecializacionService } from '../service/especializacion.service';
@@ -15,36 +14,11 @@ export class TablaEspecializacionComponent implements OnInit {
   
   public especializacion: Especializacion[] = Array<Especializacion>();
 
-  public first = 0;
-
-  public rows = 10;
-
   ngOnInit(): void {
-    this.obtenerEspecializacion();
+    this.obtenerEspecializaciones();
   }
 
-  obtenerEspecializacion(){
-    this.especializacionService.obtenerEspecializacion().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")})
+  obtenerEspecializaciones(){
+    this.especializacionService.obtenerEspecializaciones().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")})
   }
-
-  next() {
-    this.first = this.first + this.rows;
-  }
-
-  prev() {
-      this.first = this.first - this.rows;
-  }
-
-  reset() {
-      this.first = 0;
-  }
-
-  isLastPage(): boolean {
-      return this.especializacion ? this.first === (this.especializacion.length - this.rows): true;
-  }
-
-  isFirstPage(): boolean {
-      return this.especializacion ? this.first === 0 : true;
-}
-
 }

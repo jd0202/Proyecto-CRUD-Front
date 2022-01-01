@@ -11,7 +11,7 @@ import { FormPersonalMedComponent } from './form-personal-med/form-personal-med.
 import { TablaEspecializacionComponent } from './tabla-especializacion/tabla-especializacion.component';
 import { TablaHistoriaClinicaComponent } from './tabla-historia-clinica/tabla-historia-clinica.component';
 import { TablaPacienteComponent } from './tabla-paciente/tabla-paciente.component';
-import { TablaPeronalMedComponent } from './tabla-peronal-med/tabla-peronal-med.component';
+import { TablaPersonalMedComponent } from './tabla-personal-med/tabla-personal-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
@@ -30,7 +30,7 @@ import {TableModule} from 'primeng/table';
     TablaEspecializacionComponent,
     TablaHistoriaClinicaComponent,
     TablaPacienteComponent,
-    TablaPeronalMedComponent
+    TablaPersonalMedComponent
   ],
   imports: [
     BrowserModule,

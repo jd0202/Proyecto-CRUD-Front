@@ -1,0 +1,26 @@
+<p>tabla-personal-med works!</p>
+
+<p-table [value]="personalMed" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Numero de documento</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>telefono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Id especializacion</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-personalMed>
+        <tr>
+            <td>{{personalMed.id}}</td>
+            <td>{{personalMed.cedula}}</td>
+            <td>{{personalMed.nombre}}</td>
+            <td>{{personalMed.apellido}}</td>
+            <td>{{personalMed.telefono}}</td>
+            <td>{{personalMed.fechaNacimiento}}</td>
+            <td>{{personalMed.especializacionId}}</td>
+        </tr>
+    </ng-template>
+</p-table>

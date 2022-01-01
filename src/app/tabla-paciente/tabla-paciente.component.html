@@ -1,1 +1,48 @@
 <p>tabla-paciente works!</p>
+
+<p-table [value]="paciente" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Tipo de documento</th>
+            <th>Numero de documento</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Estado Civil</th>
+            <th>Grupo Sanguineo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Lugar de Nacimiento</th>
+            <th>Religion</th>
+            <th>Etnia</th>
+            <th>Tipo de poblacion</th>
+            <th>Ocupacion</th>
+            <th>Identidad de Genero</th>
+            <th>Sexo al Nacer</th>
+            <th>PersonalMedId</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-paciente>
+        <tr>
+            <td>{{paciente.id}}</td>
+            <td>{{paciente.tipoDocumento}}</td>
+            <td>{{paciente.cedula}}</td>
+            <td>{{paciente.nombre}}</td>
+            <td>{{paciente.apellido}}</td>
+            <td>{{paciente.telefono}}</td>
+            <td>{{paciente.email}}</td>
+            <td>{{paciente.estadoCivil}}</td>
+            <td>{{paciente.grupoSanguineo}}</td>
+            <td>{{paciente.fechaNacimiento}}</td>
+            <td>{{paciente.lugarNacimiento}}</td>
+            <td>{{paciente.religion}}</td>
+            <td>{{paciente.etnia}}</td>
+            <td>{{paciente.tipoPoblacionEspecial}}</td>
+            <td>{{paciente.ocupacion}}</td>
+            <td>{{paciente.identidadGenero}}</td>
+            <td>{{paciente.sexo}}</td>
+            <td>{{paciente.personalMedId}}</td>
+        </tr>
+    </ng-template>
+</p-table>
