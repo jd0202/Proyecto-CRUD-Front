@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoriaClinica } from '../model/HistoriaClinica';
+import { HistoriaClinicaService } from '../service/historia-clinica-service';
 
 @Component({
   selector: 'app-tabla-historia-clinica',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaHistoriaClinicaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private historiaCliniService: HistoriaClinicaService) { }
+
+  public historiaClinica : HistoriaClinica[] = new Array<HistoriaClinica>();
 
   ngOnInit(): void {
+    this.obtenerHistoriasClinicas();
   }
+
+  obtenerHistoriasClinicas(){
+    this.historiaCliniService.obtenerHistoriasClinicas().subscribe(respuesta=>{this.historiaClinica=respuesta},error=>{console.log("error")})
+  }
+
 
 }

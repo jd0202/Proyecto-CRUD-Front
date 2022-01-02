@@ -1,1 +1,31 @@
 <p>form-historia-clinica works!</p>
+
+<form [formGroup]="formHistoriaClinica" (ngSubmit)="enviarDatos()">
+    <p>Numero de documento</p>
+    <input type="text" formControlName="cedula">
+    <p>Fecha ingreso de paciente</p>
+    <input type="date" formControlName="fechaIngreso">
+    <p>Fecha salida de paciente</p>
+    <input type="date" formControlName="fechaSalida">
+    <p>Tipo de Consulta</p>
+    <input type="text" formControlName="tipoConsulta">
+    <p>Motivo de Consulta</p>
+    <input type="text" formControlName="motivoConsulta">
+    <p>Enfermedad Actual</p>
+    <input type="text" formControlName="enfermedadActual">
+    <p>Antecedentes</p>
+    <input type="text" formControlName="antecedentes">
+    <p>Revision de Sistemas</p>
+    <input type="text" formControlName="revisionDeSistemas">
+    <p>Examen Fisico</p>
+    <input type="text" formControlName="examenFisico">
+    <p>Diagnostico</p>
+    <input type="text" formControlName="diagnostico">
+    <p>Tratamiento</p>
+    <input type="text" formControlName="tratamientoMedico">
+    <p>Id de Paciente</p>
+    <input type="number" formControlName="idPaciente">
+    <p>Id de Personal Medico</p>
+    <input type="number" formControlName="idPersonalMed">
+    <button [disabled]="formHistoriaClinica.invalid">Enviar</button>
+</form>

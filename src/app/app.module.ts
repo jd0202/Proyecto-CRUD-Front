@@ -15,7 +15,12 @@ import { TablaPersonalMedComponent } from './tabla-personal-med/tabla-personal-m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
+import {MenuModule} from 'primeng/menu';
+import { SlideMenuModule } from 'primeng/slidemenu';
+import {MenuItem} from 'primeng/api';
+import {AccordionModule} from 'primeng/accordion';
+import {MegaMenuModule} from 'primeng/megamenu';
 
 
 
@@ -39,7 +44,11 @@ import {TableModule} from 'primeng/table';
     HttpClientModule,
     ButtonModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    MenuModule,
+    SlideMenuModule,
+    AccordionModule,
+    MegaMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

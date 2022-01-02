@@ -31,13 +31,22 @@ export class FormPersonalMedComponent implements OnInit {
 
   enviarDatos(){
     this.personalMed.cedula=this.formPersonalMed.get("cedula")?.value;
-    this.personalMed.nombre=this.formPersonalMed.get("nombre1")?.value.concat(" ",this.formPersonalMed.get("nombre2")?.value);
-    this.personalMed.apellido=this.formPersonalMed.get("apellido1")?.value.concat(" ",this.formPersonalMed.get("apellido2")?.value);
+    if(this.formPersonalMed.get("nombre2")?.value == ""){
+      this.personalMed.nombre=this.formPersonalMed.get("nombre1")?.value;
+    }else{
+      this.personalMed.nombre=this.formPersonalMed.get("nombre1")?.value.concat(" ",this.formPersonalMed.get("nombre2")?.value);
+    }
+    if(this.formPersonalMed.get("apellido2")?.value == ""){
+      this.personalMed.apellido=this.formPersonalMed.get("apellido1")?.value;
+    }else{
+      this.personalMed.apellido=this.formPersonalMed.get("apellido1")?.value.concat(" ",this.formPersonalMed.get("apellido2")?.value);
+    }
     this.personalMed.telefono=this.formPersonalMed.get("telefono")?.value;
     this.personalMed.fechaNacimiento=this.formPersonalMed.get("fechaNacimiento")?.value;
     this.personalMed.especializacionId=this.formPersonalMed.get("especializacionId")?.value;
     
     this.personalMedService.guardarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+
   }
   
 

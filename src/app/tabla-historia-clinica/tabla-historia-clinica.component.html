@@ -1,1 +1,41 @@
 <p>tabla-historia-clinica works!</p>
+
+<p-table [value]="historiaClinica" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Numero de documento</th>
+            <th>Fecha ingreso de paciente</th>
+            <th>Fecha salida de paciente</th>
+            <th>Tipo de Consulta</th>
+            <th>Motivo de Consulta</th>
+            <th>Enfermedad Actual</th>
+            <th>Antecedentes</th>
+            <th>Revision de Sistemas</th>
+            <th>Examen Fisico</th>
+            <th>Diagnostico</th>
+            <th>Tratamiento Medico</th>
+            <th>Id de Paciente</th>
+            <th>Id de Personal Medico</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-historiaClinica>
+        <tr>
+            <td>{{historiaClinica.id}}</td>
+            <td>{{historiaClinica.cedula}}</td>
+            <td>{{historiaClinica.fechaIngreso}}</td>
+            <td>{{historiaClinica.fechaSalida}}</td>
+            <td>{{historiaClinica.tipoConsulta}}</td>
+            <td>{{historiaClinica.motivoConsulta}}</td>
+            <td>{{historiaClinica.enfermedadActual}}</td>
+            <td>{{historiaClinica.antecedentes}}</td>
+            <td>{{historiaClinica.revisionDeSistemas}}</td>
+            <td>{{historiaClinica.examenFisico}}</td>
+            <td>{{historiaClinica.diagnostico}}</td>
+            <td>{{historiaClinica.tratamientoMedico}}</td>
+            <td>{{historiaClinica.idPaciente}}</td>
+            <td>{{historiaClinica.idPersonalMed}}</td>
+
+        </tr>
+    </ng-template>
+</p-table>
