@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { validateLocaleAndSetLanguage } from 'typescript';
 import { Paciente } from '../model/Paciente';
 import { PacienteService } from '../service/paciente.service';
 

@@ -1,7 +1,14 @@
 <p>form-especializacion works!</p>
 
+
 <form [formGroup]="formEspecializacion" (ngSubmit)="enviarDatos()">
     <p>nombre de Especializacion</p>
     <input type="text" formControlName="nombre">
     <button [disabled]="formEspecializacion.invalid">Enviar</button>
 </form>
+
+<ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
+
+<ng-template #createEspecializacion>  
+    <app-form-especializacion></app-form-especializacion>
+</ng-template>

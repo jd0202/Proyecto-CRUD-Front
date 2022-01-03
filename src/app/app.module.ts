@@ -14,13 +14,13 @@ import { TablaPacienteComponent } from './tabla-paciente/tabla-paciente.componen
 import { TablaPersonalMedComponent } from './tabla-personal-med/tabla-personal-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import {MenuModule} from 'primeng/menu';
-import { SlideMenuModule } from 'primeng/slidemenu';
-import {MenuItem} from 'primeng/api';
 import {AccordionModule} from 'primeng/accordion';
 import {MegaMenuModule} from 'primeng/megamenu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -42,13 +42,14 @@ import {MegaMenuModule} from 'primeng/megamenu';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ButtonModule,
     ReactiveFormsModule,
     TableModule,
-    MenuModule,
-    SlideMenuModule,
     AccordionModule,
-    MegaMenuModule
+    MegaMenuModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

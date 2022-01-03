@@ -1,11 +1,78 @@
 <p>menu works!</p>
 
-<p-megaMenu [model]="items" orientation="vertical"></p-megaMenu>
+<button mat-button [matMenuTriggerFor]="aboveMenu">Especializacion</button>
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <button mat-menu-item (click)="listarEspecializacion()" >Listar</button>
+  <button mat-menu-item (click)="crearEspecializacion()">Crear nueva Especializacion</button>
+</mat-menu>
 
-<!-- 
-<ng-container *ngIf="logicaboleana;else nombredearriba"></ng-container>
-<ng-template #nombredearriba>
-    <app-formEspecializaicon></app-form>
+<button mat-button [matMenuTriggerFor]="belowMenu">Personal Medico</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <button mat-menu-item (click)="listarPersonalMed()" >Listar</button>
+  <button mat-menu-item (click)="crearPersonalMed()">Crear nuevo Personal Medico</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="beforeMenu">Paciente</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="listarPaciente()">Listar</button>
+  <button mat-menu-item (click)="crearPaciente()">Crear nuevo paciente</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="afterMenu">Historia Clinica</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item (click)="listarHistoriaClinica()">Listar</button>
+  <button mat-menu-item (click)="crearHistoriaClinica()">Crear nueva Historia Clinica</button>
+</mat-menu>
+
+<mat-divider></mat-divider>
+
+
+
+<ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
+
+<ng-template #createEspecializacion>  
+    <app-form-especializacion></app-form-especializacion>
 </ng-template>
--->
+
+<ng-container *ngIf="!menuVars.listarEspecializacion;else listEspecializacion"></ng-container>
+
+<ng-template #listEspecializacion>  
+    <app-tabla-especializacion></app-tabla-especializacion>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.crearPersonalMed;else createPersonalMed"></ng-container>
+
+<ng-template #createPersonalMed>  
+    <app-form-personal-med></app-form-personal-med>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.listarPersonalMed;else listPersonalMed"></ng-container>
+
+<ng-template #listPersonalMed>  
+    <app-tabla-personal-med></app-tabla-personal-med>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.crearPaciente;else createPaciente"></ng-container>
+
+<ng-template #createPaciente>  
+    <app-form-paciente></app-form-paciente>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.listarPaciente;else listPaciente"></ng-container>
+
+<ng-template #listPaciente>  
+    <app-tabla-paciente></app-tabla-paciente>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.crearHistoriaClinica;else createHistoriaClinica"></ng-container>
+
+<ng-template #createHistoriaClinica>  
+    <app-form-historia-clinica></app-form-historia-clinica>
+</ng-template>
+
+<ng-container *ngIf="!menuVars.listarHistoriaClinica;else listHistoriaClinica"></ng-container>
+
+<ng-template #listHistoriaClinica>  
+    <app-tabla-historia-clinica></app-tabla-historia-clinica>
+</ng-template>
 
