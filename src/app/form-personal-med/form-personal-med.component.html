@@ -1,54 +1,40 @@
 <p>form-personal-med works!</p>
 
-<form [formGroup]="formPersonalMed" (ngSubmit)="enviarDatos()">
-    <br>
-    <div>
-        <label>Numero de documento</label><br>
-        <input type="text" formControlName="cedula" pInputText> 
-    </div>
-    <br>
-    
-    <div>
-        <label>Primer Nombre</label><br>
-        <input type="text" formControlName="nombre1" pInputText> 
-    </div>
-    <br>
-    
-    <div>
-        <label>Segundo Nombre</label><br>
-        <input type="text" formControlName="nombre2" pInputText> 
-    </div>
-    <br>
-    
-    <div>
-        <label>Primer Apellido</label><br>
-        <input type="text" formControlName="apellido1" pInputText> 
-    </div>
-    <br>
-    
-    <div>
-        <label>Segundo Apellido</label><br>
-        <input type="text" formControlName="apellido2" pInputText> 
-    </div>
-    <br>
-    
-    <div>
-        <label>Telefono</label><br>
-        <input type="text" formControlName="telefono" pInputText> 
-    </div>
-    <br>
-
-    <div class="p-field p-col-12 p-md-4">
-        <label>Fecha de Nacimiento</label><br>
-        <p-calendar inputId="basic" formControlName="fechaNacimiento"></p-calendar>
-    </div>
-    <br>
-
-    <div>
-        <label>Especializacion</label><br>
+<form [formGroup]="formPersonalMed">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Numero de documento</label><br>
+            <input type="text" formControlName="cedula" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Primer Nombre</label><br>
+            <input type="text" formControlName="nombre1" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Segundo Nombre</label><br>
+            <input type="text" formControlName="nombre2" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Primer Apellido</label><br>
+            <input type="text" formControlName="apellido1" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Segundo Apellido</label><br>
+            <input type="text" formControlName="apellido2" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Telefono</label><br>
+            <input type="text" formControlName="telefono" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Fecha de Nacimiento</label><br>
+            <p-calendar inputId="basic" formControlName="fechaNacimiento"></p-calendar>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Especializacion</label><br>
         <input type="number" formControlName="especializacionId" pInputText> 
+        </div>
     </div>
-    <br>
 </form>
 
 <ng-container *ngIf="!guardar;else save"></ng-container>
@@ -62,4 +48,5 @@
 <ng-template #edit>  
     <p-button [disabled]="formPersonalMed.invalid" label="Guardar edicion"></p-button>
 </ng-template>
+
 

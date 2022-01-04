@@ -2,19 +2,24 @@
 
 
 <form [formGroup]="formEspecializacion">
-    <br>
     <div>
         <label>Nombre de Especializacion</label><br>
         <input type="text" formControlName="nombre" pInputText> 
     </div>
-    <br>
 
-    <p-button [disabled]="formEspecializacion.invalid" label="Guardar" (click)="enviarDatos()"></p-button>
+
 </form>
 
-<!--
-<ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
 
-<ng-template #createEspecializacion>  
-    <app-form-especializacion></app-form-especializacion>
-</ng-template>-->
+<ng-container *ngIf="!guardar;else save"></ng-container>
+
+<ng-template #save>  
+    <p-button [disabled]="formEspecializacion.invalid" label="Guardar" (click)="enviarDatos()"></p-button>
+</ng-template>
+
+<ng-container *ngIf="!editar;else edit"></ng-container>
+
+<ng-template #edit>  
+    <p-button [disabled]="formEspecializacion.invalid" label="Guardar edicion" (click)="enviarDatos()"></p-button>
+</ng-template>
+

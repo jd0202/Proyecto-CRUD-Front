@@ -21,4 +21,8 @@ export class TablaEspecializacionComponent implements OnInit {
   obtenerEspecializaciones(){
     this.especializacionService.obtenerEspecializaciones().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")})
   }
+
+  enviarId(datos : Especializacion){
+    console.log(datos.id)
+  }
 }

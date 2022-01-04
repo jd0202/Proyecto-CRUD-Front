@@ -1,31 +1,59 @@
 <p>form-historia-clinica works!</p>
 
 <form [formGroup]="formHistoriaClinica" (ngSubmit)="enviarDatos()">
-    <p>Numero de documento</p>
-    <input type="text" formControlName="cedula">
-    <p>Fecha ingreso de paciente</p>
-    <input type="date" formControlName="fechaIngreso">
-    <p>Fecha salida de paciente</p>
-    <input type="date" formControlName="fechaSalida">
-    <p>Tipo de Consulta</p>
-    <input type="text" formControlName="tipoConsulta">
-    <p>Motivo de Consulta</p>
-    <input type="text" formControlName="motivoConsulta">
-    <p>Enfermedad Actual</p>
-    <input type="text" formControlName="enfermedadActual">
-    <p>Antecedentes</p>
-    <input type="text" formControlName="antecedentes">
-    <p>Revision de Sistemas</p>
-    <input type="text" formControlName="revisionDeSistemas">
-    <p>Examen Fisico</p>
-    <input type="text" formControlName="examenFisico">
-    <p>Diagnostico</p>
-    <input type="text" formControlName="diagnostico">
-    <p>Tratamiento</p>
-    <input type="text" formControlName="tratamientoMedico">
-    <p>Id de Paciente</p>
-    <input type="number" formControlName="idPaciente">
-    <p>Id de Personal Medico</p>
-    <input type="number" formControlName="idPersonalMed">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Numero de documento</label><br>
+            <input type="text" formControlName="cedula" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Fecha ingreso de paciente</label><br>
+            <p-calendar inputId="basic" formControlName="fechaIngreso"></p-calendar>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Fecha salida de paciente</label><br>
+            <p-calendar inputId="basic" formControlName="fechaSalida"></p-calendar>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Tipo de Consulta</label><br>
+            <input type="text" formControlName="tipoConsulta" pInputText> 
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Motivo de Consulta</label><br>
+            <input type="text" formControlName="motivoConsulta" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Enfermedad Actual</label><br>
+            <input type="text" formControlName="enfermedadActual" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Antecedentes</label><br>
+            <input type="text" formControlName="antecedentes" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Revision de Sistemas</label><br>
+            <input type="text" formControlName="revisionDeSistemas" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Examen Fisico</label><br>
+            <input type="text" formControlName="examenFisico" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Diagnostico</label><br>
+            <input type="text" formControlName="diagnostico" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Tratamiento</label><br>
+            <input type="text" formControlName="tratamientoMedico" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Id de Paciente</label><br>
+            <input type="number" formControlName="idPaciente" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Id de Personal Medico</label><br>
+            <input type="number" formControlName="idPersonalMed" pInputText>
+        </div>
+    </div>
     <button [disabled]="formHistoriaClinica.invalid">Enviar</button>
 </form>

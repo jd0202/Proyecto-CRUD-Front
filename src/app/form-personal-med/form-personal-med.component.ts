@@ -15,6 +15,9 @@ export class FormPersonalMedComponent implements OnInit {
 
   public personalMed : PersonalMed = new PersonalMed();
 
+  public editar: boolean = false;
+  public guardar: boolean = false;
+
   formPersonalMed = new FormGroup({
     cedula: new FormControl('',Validators.required),
     nombre1: new FormControl('',Validators.required),
@@ -25,9 +28,6 @@ export class FormPersonalMedComponent implements OnInit {
     fechaNacimiento: new FormControl('',Validators.required),
     especializacionId: new FormControl('',Validators.required)
   })
-
-  public editar: boolean = false;
-  public guardar: boolean = false;
 
   ngOnInit(): void {
   }

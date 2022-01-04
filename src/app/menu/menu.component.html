@@ -31,7 +31,7 @@
 <ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
 
 <ng-template #createEspecializacion>  
-    <app-form-especializacion></app-form-especializacion>
+    <app-form-especializacion [guardar]=menuVars.crearEspecializacion></app-form-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarEspecializacion;else listEspecializacion"></ng-container>

@@ -14,6 +14,10 @@ export class FormHistoriaClinicaComponent implements OnInit {
 
   public historiaClinica: HistoriaClinica = new HistoriaClinica();
 
+  public id: number | undefined;
+  public editar: boolean = false;
+  public guardar: boolean = false;
+
   formHistoriaClinica = new FormGroup({
     cedula: new FormControl('',Validators.required),
     fechaIngreso: new FormControl('',Validators.required),

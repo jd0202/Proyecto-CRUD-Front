@@ -13,6 +13,6 @@ export class EspecializacionService {
   }
 
   public obtenerEspecializaciones(){
-    return this.http.get<any>("http://localhost:8080/especializacion/obtenerEspecializaciones")
+    return this.http.get<any>("http://localhost:8080/especializacion/obtenerEspecializaciones");
   }
 }

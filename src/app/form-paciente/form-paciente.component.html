@@ -1,43 +1,84 @@
 <p>form-paciente works!</p>
 
 <form [formGroup]="formPaciente" (ngSubmit)="enviarDatos()">
-    <p>Tipo de documento</p>
-    <input type="text" formControlName="tipoDocumento">
-    <p>Numero de documento</p>
-    <input type="text" formControlName="cedula">
-    <p>Primer Nombre</p>
-    <input type="text" formControlName="nombre1">
-    <p>Segundo Nombre</p>
-    <input type="text" formControlName="nombre2">
-    <p>Primer Apellido</p>
-    <input type="text" formControlName="apellido1">
-    <p>Segundo Apellido</p>
-    <input type="text" formControlName="apellido2">
-    <p>Telefono</p>
-    <input type="text" formControlName="telefono">
-    <p>Email</p>
-    <input type="text" formControlName="email">
-    <p>Estado civil</p>
-    <input type="text" formControlName="estadoCivil">
-    <p>Grupo Sanguineo</p>
-    <input type="text" formControlName="grupoSanguineo">
-    <p>Fecha de Nacimiento</p>
-    <input type="date" formControlName="fechaNacimiento">
-    <p>Lugar de Nacimiento</p>
-    <input type="text" formControlName="lugarNacimiento">
-    <p>Religion</p>
-    <input type="text" formControlName="religion">
-    <p>Etnia</p>
-    <input type="text" formControlName="etnia">
-    <p>Tipo de poblacion</p>
-    <input type="text" formControlName="tipoPoblacion">
-    <p>Ocupacion</p>
-    <input type="text" formControlName="ocupacion">
-    <p>Identidad de Genero</p>
-    <input type="text" formControlName="identidadGenero">
-    <p>Sexo al nacer</p>
-    <input type="text" formControlName="sexo">
-    <p>Id de personal Medico</p>
-    <input type="text" formControlName="personalMedId">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Tipo de documento</label><br>
+            <input type="text" formControlName="tipoDocumento" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Numero de documento</label><br>
+            <input type="text" formControlName="cedula" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Primer Nombre</label><br>
+            <input type="text" formControlName="nombre1" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Segundo Nombre</label><br>
+            <input type="text" formControlName="nombre2" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Primer Apellido</label><br>
+            <input type="text" formControlName="apellido1" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Segundo Apellido</label><br>
+            <input type="text" formControlName="apellido2" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Telefono</label><br>
+            <input type="text" formControlName="telefono" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Email</label><br>
+            <input type="text" formControlName="email" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Estado civil</label><br>
+            <input type="text" formControlName="estadoCivil" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Grupo Sanguineo</label><br>
+            <input type="text" formControlName="grupoSanguineo" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Fecha de Nacimiento</label><br>
+            <p-calendar inputId="basic" formControlName="fechaNacimiento"></p-calendar>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Lugar de Nacimiento</label><br>
+            <input type="text" formControlName="lugarNacimiento" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Religion</label><br>
+            <input type="text" formControlName="religion" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Etnia</label><br>
+            <input type="text" formControlName="etnia" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Tipo de poblacion</label><br>
+            <input type="text" formControlName="tipoPoblacion" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Ocupacion</label><br>
+            <input type="text" formControlName="ocupacion" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Identidad de Genero</label><br>
+            <input type="text" formControlName="identidadGenero" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Sexo al nacer</label><br>
+            <input type="text" formControlName="sexo" pInputText>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <label>Id de personal Medico</label><br>
+            <input type="text" formControlName="personalMedId" pInputText>
+        </div>
+    </div>
+
     <button [disabled]="formPaciente.invalid">Enviar</button>
 </form>
