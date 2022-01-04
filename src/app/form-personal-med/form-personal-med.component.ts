@@ -26,6 +26,9 @@ export class FormPersonalMedComponent implements OnInit {
     especializacionId: new FormControl('',Validators.required)
   })
 
+  public editar: boolean = false;
+  public guardar: boolean = false;
+
   ngOnInit(): void {
   }
 

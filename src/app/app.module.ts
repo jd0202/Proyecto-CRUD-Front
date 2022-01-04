@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
 
 
 
@@ -49,7 +51,9 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    InputTextModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
