@@ -15,4 +15,12 @@ export class EspecializacionService {
   public obtenerEspecializaciones(){
     return this.http.get<any>("http://localhost:8080/especializacion/obtenerEspecializaciones");
   }
+
+  public obtenerEspecializacionPorId(id : any){
+    return this.http.get<any>("http://localhost:8080/especializacion/obtenerEspecializacionPorId?id="+id);
+  }
+
+  public editarDatos(datos : any){
+    return this.http.put<any>("http://localhost:8080/especializacion/editarEspecializacion", datos);
+  }
 }

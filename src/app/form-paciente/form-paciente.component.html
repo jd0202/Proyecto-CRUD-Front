@@ -79,6 +79,16 @@
             <input type="text" formControlName="personalMedId" pInputText>
         </div>
     </div>
-
-    <button [disabled]="formPaciente.invalid">Enviar</button>
 </form>
+
+<ng-container *ngIf="!guardar;else save"></ng-container>
+
+<ng-template #save>  
+    <p-button [disabled]="formPaciente.invalid" label="Guardar" (click)="enviarDatos()"></p-button>
+</ng-template>
+
+<ng-container *ngIf="!editar;else edit"></ng-container>
+
+<ng-template #edit>  
+    <p-button [disabled]="formPaciente.invalid" label="Guardar edicion" (click)="editarDatos()"></p-button>
+</ng-template>

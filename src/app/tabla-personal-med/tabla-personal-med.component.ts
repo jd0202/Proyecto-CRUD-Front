@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PersonalMed } from '../model/PersonalMed';
 import { PersonalMedService } from '../service/personal-service.service';
 
@@ -11,6 +11,8 @@ export class TablaPersonalMedComponent implements OnInit {
 
   constructor(private personalMedService: PersonalMedService) { }
 
+  @Output() enviarMenu = new EventEmitter<number>();
+
   public personalMed: PersonalMed[] = Array<PersonalMed>();
 
   ngOnInit(): void {
@@ -19,6 +21,10 @@ export class TablaPersonalMedComponent implements OnInit {
 
   obtenerPersonalMeds(){
     this.personalMedService.obtenerPersonalMeds().subscribe(respuesta=>{this.personalMed=respuesta},error=>{console.log("error")});
+  }
+
+  enviarEdicion(datos : PersonalMed){
+    this.enviarMenu.emit( datos.id);
   }
   
 }

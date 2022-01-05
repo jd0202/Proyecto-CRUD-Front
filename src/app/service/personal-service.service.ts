@@ -13,7 +13,14 @@ export class PersonalMedService {
   }
 
   public obtenerPersonalMeds(){
-    //punto de partida:implementar funcion obtener todos los personalmed en el back
     return this.http.get<any>("http://localhost:8080/personalMed/obtenerPersonalMeds");
+  }
+
+  public obtenerPersonalMedPorId(id: any){
+    return this.http.get<any>("http://localhost:8080/personalMed/obtenerPersonalMedPorId?id="+id);
+  }
+
+  public editarDatos(datos: any){
+    return this.http.put<any>("http://localhost:8080/personalMed/editarPersonalMed", datos);
   }
 }

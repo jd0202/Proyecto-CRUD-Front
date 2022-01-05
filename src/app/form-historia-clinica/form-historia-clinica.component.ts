@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HistoriaClinica } from '../model/HistoriaClinica';
 import { HistoriaClinicaService } from '../service/historia-clinica-service';
@@ -8,15 +8,15 @@ import { HistoriaClinicaService } from '../service/historia-clinica-service';
   templateUrl: './form-historia-clinica.component.html',
   styleUrls: ['./form-historia-clinica.component.css']
 })
-export class FormHistoriaClinicaComponent implements OnInit {
+export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
 
   constructor(private historiaClinicaService: HistoriaClinicaService) { }
-
+  
   public historiaClinica: HistoriaClinica = new HistoriaClinica();
 
-  public id: number | undefined;
-  public editar: boolean = false;
-  public guardar: boolean = false;
+  @Input() public guardar: boolean = false;
+  @Input() public editar: boolean = false;
+  @Input() public id : number = 0;
 
   formHistoriaClinica = new FormGroup({
     cedula: new FormControl('',Validators.required),
@@ -34,10 +34,36 @@ export class FormHistoriaClinicaComponent implements OnInit {
     idPersonalMed: new FormControl('',Validators.required),
   })
 
+  ngOnChanges(): void {
+    if(this.editar){
+      this.edit()
+    }
+  }
+
   ngOnInit(): void {
   }
 
-  enviarDatos(){
+  edit(): void{
+    this.historiaClinicaService.obtenerHistoriaClinicaPorId(this.id).subscribe(respuesta=>{
+      this.formHistoriaClinica.setValue({
+        cedula: respuesta.cedula,
+        fechaIngreso: new Date(respuesta.fechaIngreso),
+        fechaSalida: new Date(respuesta.fechaSalida),
+        tipoConsulta: respuesta.tipoConsulta,
+        motivoConsulta: respuesta.motivoConsulta,
+        enfermedadActual: respuesta.enfermedadActual,
+        antecedentes: respuesta.antecedentes,
+        revisionDeSistemas: respuesta.revisionDeSistemas,
+        examenFisico: respuesta.examenFisico,
+        diagnostico: respuesta.diagnostico,
+        tratamientoMedico: respuesta.tratamientoMedico,
+        idPaciente: respuesta.idPaciente,
+        idPersonalMed: respuesta.idPersonalMed
+      });
+    },error=>{console.log("error")})
+  }
+
+  enviarDatos(): void{
     this.historiaClinica.cedula=this.formHistoriaClinica.get("cedula")?.value;
     this.historiaClinica.fechaIngreso=this.formHistoriaClinica.get("fechaIngreso")?.value;
     this.historiaClinica.fechaSalida=this.formHistoriaClinica.get("fechaSalida")?.value;
@@ -54,6 +80,25 @@ export class FormHistoriaClinicaComponent implements OnInit {
 
     this.historiaClinicaService.guardarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
     
+  }
+
+  editarDatos(){
+    this.historiaClinica.id=this.id
+    this.historiaClinica.cedula=this.formHistoriaClinica.get("cedula")?.value;
+    this.historiaClinica.fechaIngreso=this.formHistoriaClinica.get("fechaIngreso")?.value;
+    this.historiaClinica.fechaSalida=this.formHistoriaClinica.get("fechaSalida")?.value;
+    this.historiaClinica.tipoConsulta=this.formHistoriaClinica.get("tipoConsulta")?.value;
+    this.historiaClinica.motivoConsulta=this.formHistoriaClinica.get("motivoConsulta")?.value;
+    this.historiaClinica.enfermedadActual=this.formHistoriaClinica.get("enfermedadActual")?.value;
+    this.historiaClinica.antecedentes=this.formHistoriaClinica.get("antecedentes")?.value;
+    this.historiaClinica.revisionDeSistemas=this.formHistoriaClinica.get("revisionDeSistemas")?.value;
+    this.historiaClinica.examenFisico=this.formHistoriaClinica.get("examenFisico")?.value;
+    this.historiaClinica.diagnostico=this.formHistoriaClinica.get("diagnostico")?.value;
+    this.historiaClinica.tratamientoMedico=this.formHistoriaClinica.get("tratamientoMedico")?.value;
+    this.historiaClinica.idPaciente=this.formHistoriaClinica.get("idPaciente")?.value;
+    this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
+
+    this.historiaClinicaService.editarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
   }
 
 }

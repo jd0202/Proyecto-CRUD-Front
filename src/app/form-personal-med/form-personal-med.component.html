@@ -46,7 +46,7 @@
 <ng-container *ngIf="!editar;else edit"></ng-container>
 
 <ng-template #edit>  
-    <p-button [disabled]="formPersonalMed.invalid" label="Guardar edicion"></p-button>
+    <p-button [disabled]="formPersonalMed.invalid" label="Guardar edicion" (click)="editarDatos()"></p-button>
 </ng-template>
 
 

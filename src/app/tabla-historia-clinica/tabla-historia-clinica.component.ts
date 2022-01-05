@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HistoriaClinica } from '../model/HistoriaClinica';
 import { HistoriaClinicaService } from '../service/historia-clinica-service';
 
@@ -13,6 +13,8 @@ export class TablaHistoriaClinicaComponent implements OnInit {
 
   public historiaClinica : HistoriaClinica[] = new Array<HistoriaClinica>();
 
+  @Output() enviarMenu = new EventEmitter<number>();
+
   ngOnInit(): void {
     this.obtenerHistoriasClinicas();
   }
@@ -21,5 +23,7 @@ export class TablaHistoriaClinicaComponent implements OnInit {
     this.historiaCliniService.obtenerHistoriasClinicas().subscribe(respuesta=>{this.historiaClinica=respuesta},error=>{console.log("error")})
   }
 
-
+  enviarEdicion(datos : HistoriaClinica){
+    this.enviarMenu.emit(datos.id);
+  }
 }

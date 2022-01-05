@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   public menuVars: Menu = new Menu();
+  public id: number = 0;
   
   ngOnInit(){
   }
@@ -25,7 +26,13 @@ export class MenuComponent implements OnInit {
       this.menuVars.listarEspecializacion=true;
   }
 
-  crearPersonalMed(){
+  editarEspecializacion($event: any){
+    this.id=parseInt($event);
+    this.menuVars.varsFalse();
+    this.menuVars.editarEspecializacion=true;
+    }
+
+  crearPersonalMed(): void{
       this.menuVars.varsFalse();
       this.menuVars.crearPersonalMed=true;
   }
@@ -35,9 +42,21 @@ export class MenuComponent implements OnInit {
       this.menuVars.listarPersonalMed=true;
   }
 
+  editarPersonalMed($event: any){
+      this.id=parseInt($event);
+      this.menuVars.varsFalse();
+      this.menuVars.editarPersonalMed=true;
+  }
+
   crearPaciente(){
       this.menuVars.varsFalse();
       this.menuVars.crearPaciente=true;
+  }
+
+  editarPaciente($event: any){
+    this.id=parseInt($event);
+    this.menuVars.varsFalse();
+    this.menuVars.editarPaciente=true;
   }
 
   listarPaciente(){
@@ -53,6 +72,12 @@ export class MenuComponent implements OnInit {
   listarHistoriaClinica(){
       this.menuVars.varsFalse();
       this.menuVars.listarHistoriaClinica=true;
+  }
+
+  editarHistoriaClinica($event: any){
+      this.id=parseInt($event);
+      this.menuVars.varsFalse();
+      this.menuVars.editarHistoriaClinica=true;
   }
 }
 

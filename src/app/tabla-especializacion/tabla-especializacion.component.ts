@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Especializacion } from '../model/Especializacion';
 import { EspecializacionService } from '../service/especializacion.service';
 
@@ -12,6 +12,8 @@ export class TablaEspecializacionComponent implements OnInit {
 
   constructor(private especializacionService: EspecializacionService) { }
   
+   @Output() enviarMenu = new EventEmitter<number>();
+
   public especializacion: Especializacion[] = Array<Especializacion>();
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class TablaEspecializacionComponent implements OnInit {
     this.especializacionService.obtenerEspecializaciones().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")})
   }
 
-  enviarId(datos : Especializacion){
-    console.log(datos.id)
+  enviarEdicion(datos : Especializacion){
+    this.enviarMenu.emit(datos.id);
   }
 }

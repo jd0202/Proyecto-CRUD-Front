@@ -2,8 +2,10 @@ export class Paciente{
     public id: number | undefined; 
     public tipoDocumento: string | undefined;
     public cedula: string | undefined;
-    public nombre: string | undefined;
-    public apellido: string | undefined;
+    public nombre1: string | undefined;
+    public nombre2: string | undefined;
+    public apellido1: string | undefined;
+    public apellido2: string | undefined;
     public telefono: string | undefined;
     public email: string | undefined;
     public estadoCivil: string | undefined;

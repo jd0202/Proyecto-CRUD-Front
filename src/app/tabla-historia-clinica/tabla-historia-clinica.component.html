@@ -17,6 +17,7 @@
             <th>Tratamiento Medico</th>
             <th>Id de Paciente</th>
             <th>Id de Personal Medico</th>
+            <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-historiaClinica>
@@ -35,7 +36,10 @@
             <td>{{historiaClinica.tratamientoMedico}}</td>
             <td>{{historiaClinica.idPaciente}}</td>
             <td>{{historiaClinica.idPersonalMed}}</td>
-
+            <th>
+                <button (click)="enviarEdicion(historiaClinica)">Editar</button>
+                <button>Eliminar</button>
+            </th>
         </tr>
     </ng-template>
 </p-table>
