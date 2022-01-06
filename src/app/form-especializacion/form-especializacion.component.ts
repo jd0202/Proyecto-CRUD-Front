@@ -17,15 +17,16 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
-  @Output() abrirTabla = new EventEmitter<any>();
+  @Output() abrirMenu = new EventEmitter<any>();
+  
   
   formEspecializacion = new FormGroup({
     nombre: new FormControl('',Validators.required)
-  })
+  });
 
   ngOnChanges(): void {
     if(this.editar){
-      this.edit()
+      this.edit();
     }
   }
 
@@ -36,8 +37,8 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
   enviarDatos(): void{
     this.especializacion.especializacion=this.formEspecializacion.get("nombre")?.value;
 
-    this.especializacionService.guardarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+    this.especializacionService.guardarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 
   edit(): void{
@@ -45,14 +46,14 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
       this.formEspecializacion.setValue({
         nombre : respuesta.especializacion
       });
-    },error=>{console.log("error")})
+    },error=>{console.log("error")});
   }
 
   editarDatos(): void{
     this.especializacion.id=this.id
     this.especializacion.especializacion=this.formEspecializacion.get("nombre")?.value;
 
-    this.especializacionService.editarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+    this.especializacionService.editarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 }

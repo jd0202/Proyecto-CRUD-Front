@@ -1,10 +1,23 @@
-<p>form-paciente works!</p>
+<!--<p>form-paciente works!</p>-->
+
+<ng-container *ngIf="!guardar;else headerGuardar"></ng-container>
+
+<ng-template #headerGuardar>
+    <h1>Crear Paciente</h1>
+</ng-template>
+
+<ng-container *ngIf="!editar;else headerEditar"></ng-container>
+
+<ng-template #headerEditar>  
+    <h1>Editar Paciente</h1>
+</ng-template>
 
 <form [formGroup]="formPaciente" (ngSubmit)="enviarDatos()">
     <div class="grid">
         <div class="col-12 md:col-6 lg:col-3">
             <label>Tipo de documento</label><br>
-            <input type="text" formControlName="tipoDocumento" pInputText>
+            <p-cascadeSelect formControlName="tipoDocumento" [options]="tiposDocumento" [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '14rem'}">
+            </p-cascadeSelect>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Numero de documento</label><br>
@@ -36,18 +49,20 @@
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Estado civil</label><br>
-            <input type="text" formControlName="estadoCivil" pInputText>
+            <p-cascadeSelect formControlName="estadoCivil" [options]="estadosCiviles" [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '14rem'}">
+            </p-cascadeSelect>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Grupo Sanguineo</label><br>
-            <input type="text" formControlName="grupoSanguineo" pInputText>
+            <p-cascadeSelect formControlName="grupoSanguineo" [options]="gruposSanguineos" [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '14rem'}">
+            </p-cascadeSelect>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Fecha de Nacimiento</label><br>
             <p-calendar inputId="basic" formControlName="fechaNacimiento"></p-calendar>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
-            <label>Lugar de Nacimiento</label><br>
+            <label>Pais de Nacimiento</label><br>
             <input type="text" formControlName="lugarNacimiento" pInputText>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
@@ -59,7 +74,7 @@
             <input type="text" formControlName="etnia" pInputText>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
-            <label>Tipo de poblacion</label><br>
+            <label>Tipo de poblacion especial</label><br>
             <input type="text" formControlName="tipoPoblacion" pInputText>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
@@ -72,11 +87,12 @@
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Sexo al nacer</label><br>
-            <input type="text" formControlName="sexo" pInputText>
+            <p-cascadeSelect formControlName="sexo" [options]="sexos" [optionGroupChildren]="['states', 'cities']" [style]="{'minWidth': '14rem'}">
+            </p-cascadeSelect>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Id de personal Medico</label><br>
-            <input type="text" formControlName="personalMedId" pInputText>
+            <input type="number" min=1 formControlName="personalMedId" pInputText>
         </div>
     </div>
 </form>

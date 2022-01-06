@@ -1,5 +1,16 @@
-<p>form-especializacion works!</p>
+<!--<p>form-especializacion works!</p>-->
 
+<ng-container *ngIf="!guardar;else headerGuardar"></ng-container>
+
+<ng-template #headerGuardar>
+    <h1>Crear Especializacion</h1>
+</ng-template>
+
+<ng-container *ngIf="!editar;else headerEditar"></ng-container>
+
+<ng-template #headerEditar>  
+    <h1>Editar Especializacion</h1>
+</ng-template>
 
 <form [formGroup]="formEspecializacion">
     <div class="grid">

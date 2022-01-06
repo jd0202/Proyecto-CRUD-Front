@@ -1,4 +1,16 @@
-<p>form-personal-med works!</p>
+<!--<p>form-personal-med works!</p>-->
+
+<ng-container *ngIf="!guardar;else headerGuardar"></ng-container>
+
+<ng-template #headerGuardar>
+    <h1>Crear Personal Medico</h1>
+</ng-template>
+
+<ng-container *ngIf="!editar;else headerEditar"></ng-container>
+
+<ng-template #headerEditar>  
+    <h1>Editar Personal Medico</h1>
+</ng-template>
 
 <form [formGroup]="formPersonalMed">
     <div class="grid">
@@ -31,8 +43,8 @@
             <p-calendar inputId="basic" formControlName="fechaNacimiento"></p-calendar>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
-            <label>Especializacion</label><br>
-        <input type="number" formControlName="especializacionId" pInputText> 
+            <label> Id de Especializacion</label><br>
+        <input type="number" min=1 formControlName="especializacionId" pInputText> 
         </div>
     </div>
 </form>

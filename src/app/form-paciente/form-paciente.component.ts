@@ -14,10 +14,15 @@ export class FormPacienteComponent implements OnInit, OnChanges {
 
   public paciente: Paciente = new Paciente();
 
+  public gruposSanguineos: any[]=[];
+  public tiposDocumento: any[]=[];
+  public estadosCiviles: any[]=[];
+  public sexos: any[]=[];
+
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
-  @Output() abrirTabla = new EventEmitter<any>();
+  @Output() abrirMenu = new EventEmitter<any>();
   
   formPaciente = new FormGroup({
     tipoDocumento: new FormControl('',Validators.required),
@@ -48,9 +53,13 @@ export class FormPacienteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.gruposSanguineos = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
+    this.tiposDocumento = ["Cedula", "Cedula de Extranjeria", "Pasaporte", "Registro Civil", "Tarjeta de identidad", "Certificado de nacido vivo"];
+    this.estadosCiviles = ["Casado", "Divorciado", "Legalmente separado", "Separado", "Soltero/a", "Union Libre", "Viudo/a"];
+    this.sexos=["Masculino", "Femenino"];
   }
 
-  enviarDatos(){
+  obtenerDatosFormulario(): void{
     this.paciente.tipoDocumento=this.formPaciente.get("tipoDocumento")?.value;
     this.paciente.cedula=this.formPaciente.get("cedula")?.value;
     this.paciente.nombre1=this.formPaciente.get("nombre1")?.value;
@@ -70,15 +79,18 @@ export class FormPacienteComponent implements OnInit, OnChanges {
     this.paciente.identidadGenero=this.formPaciente.get("identidadGenero")?.value;
     this.paciente.sexo=this.formPaciente.get("sexo")?.value;
     this.paciente.personalMedId=this.formPaciente.get("personalMedId")?.value;
+  }
 
-    this.pacienteService.guardarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+  enviarDatos(): void{
+    this.obtenerDatosFormulario();
+
+    this.pacienteService.guardarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 
   edit(): void{
-
     this.pacienteService.obtenerPacientePorId(this.id).subscribe(respuesta=>{
-      this.formPaciente.patchValue({
+      this.formPaciente.setValue({
         tipoDocumento: respuesta.tipoDocumento,
         cedula: respuesta.cedula,
         nombre1: respuesta.nombre1,
@@ -93,38 +105,21 @@ export class FormPacienteComponent implements OnInit, OnChanges {
         lugarNacimiento: respuesta.lugarNacimiento,
         religion: respuesta.religion,
         etnia: respuesta.etnia,
+        tipoPoblacion: respuesta.tipoPoblacionEspecial,
         ocupacion: respuesta.ocupacion,
         identidadGenero: respuesta.identidadGenero,
         sexo: respuesta.sexo,
         personalMedId: respuesta.personalMedId
       });
-    },error=>{console.log("error")})
+    },error=>{console.log("error")});
   }
 
   editarDatos(): void{
-    this.paciente.id=this.id
-    this.paciente.tipoDocumento=this.formPaciente.get("tipoDocumento")?.value;
-    this.paciente.cedula=this.formPaciente.get("cedula")?.value;
-    this.paciente.nombre1=this.formPaciente.get("nombre1")?.value;
-    this.paciente.nombre2=this.formPaciente.get("nombre2")?.value;
-    this.paciente.apellido1=this.formPaciente.get("apellido1")?.value;
-    this.paciente.apellido2=this.formPaciente.get("apellido2")?.value;
-    this.paciente.telefono=this.formPaciente.get("telefono")?.value;
-    this.paciente.email=this.formPaciente.get("email")?.value;
-    this.paciente.estadoCivil=this.formPaciente.get("estadoCivil")?.value;
-    this.paciente.grupoSanguineo=this.formPaciente.get("grupoSanguineo")?.value;
-    this.paciente.fechaNacimiento=this.formPaciente.get("fechaNacimiento")?.value;
-    this.paciente.lugarNacimiento=this.formPaciente.get("lugarNacimiento")?.value;
-    this.paciente.religion=this.formPaciente.get("religion")?.value;
-    this.paciente.etnia=this.formPaciente.get("etnia")?.value;
-    this.paciente.tipoPoblacionEspecial=this.formPaciente.get("tipoPoblacion")?.value;
-    this.paciente.ocupacion=this.formPaciente.get("ocupacion")?.value;
-    this.paciente.identidadGenero=this.formPaciente.get("identidadGenero")?.value;
-    this.paciente.sexo=this.formPaciente.get("sexo")?.value;
-    this.paciente.personalMedId=this.formPaciente.get("personalMedId")?.value;
+    this.paciente.id=this.id;
+    this.obtenerDatosFormulario();
 
-    this.pacienteService.editarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+    this.pacienteService.editarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 
 }

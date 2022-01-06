@@ -23,7 +23,7 @@ export class TablaEspecializacionComponent implements OnInit, OnChanges {
   public especializacionDelete: Especializacion = new Especializacion();
 
   ngOnChanges(): void {
-    this.obtenerEspecializaciones()
+    this.obtenerEspecializaciones();
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class TablaEspecializacionComponent implements OnInit, OnChanges {
   }
 
   obtenerEspecializaciones(){
-    this.especializacionService.obtenerEspecializaciones().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")})
+    this.especializacionService.obtenerEspecializaciones().subscribe(respuesta=>{this.especializacion=respuesta},error=>{console.log("error")});
   }
 
   enviarEdicion(datos : Especializacion){
@@ -40,7 +40,7 @@ export class TablaEspecializacionComponent implements OnInit, OnChanges {
 
   eliminar(){
     this.displayResponsive=false;
-    this.especializacionService.eliminarDatos(this.especializacionDelete.id).subscribe(respuesta=>{this.obtenerEspecializaciones(),console.log(respuesta);},error=>{console.log("error ");})
+    this.especializacionService.eliminarDatos(this.especializacionDelete.id).subscribe(respuesta=>{this.obtenerEspecializaciones(),console.log(respuesta);},error=>{console.log("error ");});
     this.abrirMenu.emit();
   }
 

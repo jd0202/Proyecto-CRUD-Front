@@ -1,7 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersonalMed } from '../model/PersonalMed';
-import { PersonalMedService } from '../service/personal-service.service';
+import { PersonalMedService } from '../service/personal-med-service.service';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class FormPersonalMedComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
+  @Output() abrirMenu = new EventEmitter<any>();
 
   formPersonalMed = new FormGroup({
     cedula: new FormControl('',Validators.required),
@@ -32,14 +33,14 @@ export class FormPersonalMedComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if(this.editar){
-      this.edit()
+      this.edit();
     }
   }
 
   ngOnInit(): void {
   }
-
-  enviarDatos(){
+  
+  obtenerDatosFormulario(): void{
     this.personalMed.cedula=this.formPersonalMed.get("cedula")?.value;
     this.personalMed.nombre1=this.formPersonalMed.get("nombre1")?.value;
     this.personalMed.nombre2=this.formPersonalMed.get("nombre2")?.value;
@@ -48,35 +49,36 @@ export class FormPersonalMedComponent implements OnInit, OnChanges {
     this.personalMed.telefono=this.formPersonalMed.get("telefono")?.value;
     this.personalMed.fechaNacimiento=this.formPersonalMed.get("fechaNacimiento")?.value;
     this.personalMed.especializacionId=this.formPersonalMed.get("especializacionId")?.value;
-    
-    this.personalMedService.guardarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-
   }
+
+  enviarDatos(): void{
+    this.obtenerDatosFormulario();
+    
+    this.personalMedService.guardarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
+  }
+
   edit(): void{
 
     this.personalMedService.obtenerPersonalMedPorId(this.id).subscribe(respuesta=>{
-      this.formPersonalMed.patchValue({
+      this.formPersonalMed.setValue({
         cedula: respuesta.cedula,
+        nombre1: respuesta.nombre1,
+        nombre2: respuesta.nombre2,
+        apellido1: respuesta.apellido1,
+        apellido2: respuesta.apellido2,
         telefono: respuesta.telefono,
         fechaNacimiento: new Date(respuesta.fechaNacimiento),
         especializacionId: respuesta.especializacionId
       });
-    },error=>{console.log("error")})
+    },error=>{console.log("error")});
   }
 
   editarDatos(): void{
-    this.personalMed.id=this.id
-    this.personalMed.cedula=this.formPersonalMed.get("cedula")?.value;
-    this.personalMed.nombre1=this.formPersonalMed.get("nombre1")?.value;
-    this.personalMed.nombre2=this.formPersonalMed.get("nombre2")?.value;
-    this.personalMed.apellido1=this.formPersonalMed.get("apellido1")?.value;
-    this.personalMed.apellido2=this.formPersonalMed.get("apellido2")?.value;
-    this.personalMed.telefono=this.formPersonalMed.get("telefono")?.value;
-    this.personalMed.fechaNacimiento=this.formPersonalMed.get("fechaNacimiento")?.value;
-    this.personalMed.especializacionId=this.formPersonalMed.get("especializacionId")?.value;
+    this.personalMed.id=this.id;
+    this.obtenerDatosFormulario();
 
-    this.personalMedService.editarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.personalMedService.editarDatos(this.personalMed).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
-  
-
 }

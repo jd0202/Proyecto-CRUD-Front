@@ -21,7 +21,7 @@ export class TablaHistoriaClinicaComponent implements OnInit, OnChanges {
   public displayResponsive: boolean | undefined;
 
   ngOnChanges(): void {
-    this.obtenerHistoriasClinicas()
+    this.obtenerHistoriasClinicas();
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class TablaHistoriaClinicaComponent implements OnInit, OnChanges {
   }
 
   obtenerHistoriasClinicas(){
-    this.historiaClinicaService.obtenerHistoriasClinicas().subscribe(respuesta=>{this.historiaClinica=respuesta},error=>{console.log("error")})
+    this.historiaClinicaService.obtenerHistoriasClinicas().subscribe(respuesta=>{this.historiaClinica=respuesta},error=>{console.log("error")});
   }
 
   enviarEdicion(datos : HistoriaClinica){
@@ -38,12 +38,12 @@ export class TablaHistoriaClinicaComponent implements OnInit, OnChanges {
 
   eliminar(){
     this.displayResponsive=false;
-    this.historiaClinicaService.eliminarDatos(this.historiClinicaDelete.id).subscribe(respuesta=>{this.obtenerHistoriasClinicas(),console.log(respuesta);},error=>{console.log("error ");})
+    this.historiaClinicaService.eliminarDatos(this.historiClinicaDelete.id).subscribe(respuesta=>{this.obtenerHistoriasClinicas(),console.log(respuesta);},error=>{console.log("error ");});
     this.abrirMenu.emit();
   }
 
   showResponsiveDialog(historia: HistoriaClinica){
     this.displayResponsive=true;
-    this.historiClinicaDelete=historia
+    this.historiClinicaDelete=historia;
   }
 }

@@ -16,7 +16,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import {AccordionModule} from 'primeng/accordion';
-import {MegaMenuModule} from 'primeng/megamenu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,7 +24,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {DialogModule} from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 @NgModule({
@@ -49,7 +49,6 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     TableModule,
     AccordionModule,
-    MegaMenuModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,
@@ -58,6 +57,8 @@ import { ButtonModule } from 'primeng/button';
     CalendarModule,
     DialogModule,
     ButtonModule,
+    CascadeSelectModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

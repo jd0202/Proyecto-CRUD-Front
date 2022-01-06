@@ -1,4 +1,16 @@
-<p>form-historia-clinica works!</p>
+<!--<p>form-historia-clinica works!</p>-->
+
+<ng-container *ngIf="!guardar;else headerGuardar"></ng-container>
+
+<ng-template #headerGuardar>
+    <h1>Crear Historia Clinica</h1>
+</ng-template>
+
+<ng-container *ngIf="!editar;else headerEditar"></ng-container>
+
+<ng-template #headerEditar>  
+    <h1>Editar Historia Clinica</h1>
+</ng-template>
 
 <form [formGroup]="formHistoriaClinica" (ngSubmit)="enviarDatos()">
     <div class="grid">
@@ -26,33 +38,38 @@
             <label>Enfermedad Actual</label><br>
             <input type="text" formControlName="enfermedadActual" pInputText>
         </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Antecedentes</label><br>
-            <input type="text" formControlName="antecedentes" pInputText>
+            <textarea type="text" rows="5" cols="195" formControlName="antecedentes" pInputTextarea></textarea>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Revision de Sistemas</label><br>
-            <input type="text" formControlName="revisionDeSistemas" pInputText>
+            <textarea type="text" rows="5" cols="195" formControlName="revisionDeSistemas" pInputTextarea></textarea>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Examen Fisico</label><br>
-            <input type="text" formControlName="examenFisico" pInputText>
+            <textarea type="text" rows="5" cols="195" formControlName="examenFisico" pInputTextarea></textarea>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Diagnostico</label><br>
-            <input type="text" formControlName="diagnostico" pInputText>
+            <textarea type="text" rows="5" cols="195" formControlName="diagnostico" pInputTextarea></textarea>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Tratamiento</label><br>
-            <input type="text" formControlName="tratamientoMedico" pInputText>
+            <textarea type="text" rows="5" cols="195" formControlName="tratamientoMedico" pInputTextarea></textarea>
         </div>
+    </div>
+    <div class="grid">
         <div class="col-12 md:col-6 lg:col-3">
             <label>Id de Paciente</label><br>
-            <input type="number" formControlName="idPaciente" pInputText>
+            <input type="number" min=1 formControlName="idPaciente" pInputText>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
             <label>Id de Personal Medico</label><br>
-            <input type="number" formControlName="idPersonalMed" pInputText>
+            <input type="number" min=1 formControlName="idPersonalMed" pInputText>
         </div>
     </div>
 </form>

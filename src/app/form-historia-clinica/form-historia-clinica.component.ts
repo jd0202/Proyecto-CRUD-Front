@@ -17,7 +17,7 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
-  @Output() abrirTabla = new EventEmitter<any>();
+  @Output() abrirMenu = new EventEmitter<any>();
 
   formHistoriaClinica = new FormGroup({
     cedula: new FormControl('',Validators.required),
@@ -43,6 +43,22 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
   }
+  
+  obtenerDatosFormulario(): void{
+    this.historiaClinica.cedula=this.formHistoriaClinica.get("cedula")?.value;
+    this.historiaClinica.fechaIngreso=this.formHistoriaClinica.get("fechaIngreso")?.value;
+    this.historiaClinica.fechaSalida=this.formHistoriaClinica.get("fechaSalida")?.value;
+    this.historiaClinica.tipoConsulta=this.formHistoriaClinica.get("tipoConsulta")?.value;
+    this.historiaClinica.motivoConsulta=this.formHistoriaClinica.get("motivoConsulta")?.value;
+    this.historiaClinica.enfermedadActual=this.formHistoriaClinica.get("enfermedadActual")?.value;
+    this.historiaClinica.antecedentes=this.formHistoriaClinica.get("antecedentes")?.value;
+    this.historiaClinica.revisionDeSistemas=this.formHistoriaClinica.get("revisionDeSistemas")?.value;
+    this.historiaClinica.examenFisico=this.formHistoriaClinica.get("examenFisico")?.value;
+    this.historiaClinica.diagnostico=this.formHistoriaClinica.get("diagnostico")?.value;
+    this.historiaClinica.tratamientoMedico=this.formHistoriaClinica.get("tratamientoMedico")?.value;
+    this.historiaClinica.idPaciente=this.formHistoriaClinica.get("idPaciente")?.value;
+    this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
+  }
 
   edit(): void{
     this.historiaClinicaService.obtenerHistoriaClinicaPorId(this.id).subscribe(respuesta=>{
@@ -65,42 +81,18 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
   }
 
   enviarDatos(): void{
-    this.historiaClinica.cedula=this.formHistoriaClinica.get("cedula")?.value;
-    this.historiaClinica.fechaIngreso=this.formHistoriaClinica.get("fechaIngreso")?.value;
-    this.historiaClinica.fechaSalida=this.formHistoriaClinica.get("fechaSalida")?.value;
-    this.historiaClinica.tipoConsulta=this.formHistoriaClinica.get("tipoConsulta")?.value;
-    this.historiaClinica.motivoConsulta=this.formHistoriaClinica.get("motivoConsulta")?.value;
-    this.historiaClinica.enfermedadActual=this.formHistoriaClinica.get("enfermedadActual")?.value;
-    this.historiaClinica.antecedentes=this.formHistoriaClinica.get("antecedentes")?.value;
-    this.historiaClinica.revisionDeSistemas=this.formHistoriaClinica.get("revisionDeSistemas")?.value;
-    this.historiaClinica.examenFisico=this.formHistoriaClinica.get("examenFisico")?.value;
-    this.historiaClinica.diagnostico=this.formHistoriaClinica.get("diagnostico")?.value;
-    this.historiaClinica.tratamientoMedico=this.formHistoriaClinica.get("tratamientoMedico")?.value;
-    this.historiaClinica.idPaciente=this.formHistoriaClinica.get("idPaciente")?.value;
-    this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
+    this.obtenerDatosFormulario();
 
-    this.historiaClinicaService.guardarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+    this.historiaClinicaService.guardarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 
-  editarDatos(){
-    this.historiaClinica.id=this.id
-    this.historiaClinica.cedula=this.formHistoriaClinica.get("cedula")?.value;
-    this.historiaClinica.fechaIngreso=this.formHistoriaClinica.get("fechaIngreso")?.value;
-    this.historiaClinica.fechaSalida=this.formHistoriaClinica.get("fechaSalida")?.value;
-    this.historiaClinica.tipoConsulta=this.formHistoriaClinica.get("tipoConsulta")?.value;
-    this.historiaClinica.motivoConsulta=this.formHistoriaClinica.get("motivoConsulta")?.value;
-    this.historiaClinica.enfermedadActual=this.formHistoriaClinica.get("enfermedadActual")?.value;
-    this.historiaClinica.antecedentes=this.formHistoriaClinica.get("antecedentes")?.value;
-    this.historiaClinica.revisionDeSistemas=this.formHistoriaClinica.get("revisionDeSistemas")?.value;
-    this.historiaClinica.examenFisico=this.formHistoriaClinica.get("examenFisico")?.value;
-    this.historiaClinica.diagnostico=this.formHistoriaClinica.get("diagnostico")?.value;
-    this.historiaClinica.tratamientoMedico=this.formHistoriaClinica.get("tratamientoMedico")?.value;
-    this.historiaClinica.idPaciente=this.formHistoriaClinica.get("idPaciente")?.value;
-    this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
+  editarDatos(): void{
+    this.historiaClinica.id=this.id;
+    this.obtenerDatosFormulario();
 
-    this.historiaClinicaService.editarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    this.abrirTabla.emit();
+    this.historiaClinicaService.editarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");});
+    this.abrirMenu.emit();
   }
 
 }

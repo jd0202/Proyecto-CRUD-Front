@@ -1,28 +1,34 @@
-<p>menu works!</p>
+<!--<p>menu works!</p>-->
+<div class="card">
+    <div class="flex flex-wrap md:justify-content-between justify-content-center card-container">
+        <div class="text-white font-bold border-round m-2 flex align-items-center justify-content-center" style="background-color:rgb(19, 133, 226);">
+            <button mat-button [matMenuTriggerFor]="aboveMenu">Especializacion</button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+                <button mat-menu-item (click)="listarEspecializacion()" >Listar</button>
+                <button mat-menu-item (click)="crearEspecializacion()">Crear nueva Especializacion</button>
+            </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="aboveMenu">Especializacion</button>
-<mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item (click)="listarEspecializacion()" >Listar</button>
-  <button mat-menu-item (click)="crearEspecializacion()">Crear nueva Especializacion</button>
-</mat-menu>
+            <button mat-button [matMenuTriggerFor]="belowMenu">Personal Medico</button>
+                <mat-menu #belowMenu="matMenu" yPosition="below">
+                <button mat-menu-item (click)="listarPersonalMed()" >Listar</button>
+                <button mat-menu-item (click)="crearPersonalMed()">Crear nuevo Personal Medico</button>
+            </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="belowMenu">Personal Medico</button>
-<mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item (click)="listarPersonalMed()" >Listar</button>
-  <button mat-menu-item (click)="crearPersonalMed()">Crear nuevo Personal Medico</button>
-</mat-menu>
+            <button mat-button [matMenuTriggerFor]="beforeMenu">Paciente</button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="listarPaciente()">Listar</button>
+                <button mat-menu-item (click)="crearPaciente()">Crear nuevo paciente</button>
+            </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="beforeMenu">Paciente</button>
-<mat-menu #beforeMenu="matMenu" xPosition="before">
-  <button mat-menu-item (click)="listarPaciente()">Listar</button>
-  <button mat-menu-item (click)="crearPaciente()">Crear nuevo paciente</button>
-</mat-menu>
+            <button mat-button [matMenuTriggerFor]="afterMenu">Historia Clinica</button>
+            <mat-menu #afterMenu="matMenu" xPosition="after">
+                <button mat-menu-item (click)="listarHistoriaClinica()">Listar</button>
+                <button mat-menu-item (click)="crearHistoriaClinica()">Crear nueva Historia Clinica</button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
 
-<button mat-button [matMenuTriggerFor]="afterMenu">Historia Clinica</button>
-<mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item (click)="listarHistoriaClinica()">Listar</button>
-  <button mat-menu-item (click)="crearHistoriaClinica()">Crear nueva Historia Clinica</button>
-</mat-menu>
 
 <mat-divider></mat-divider>
 
@@ -31,7 +37,7 @@
 <ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
 
 <ng-template #createEspecializacion>  
-    <app-form-especializacion [guardar]=menuVars.crearEspecializacion (abrirTabla)="menuVars.crearEspecializacion=false"></app-form-especializacion>
+    <app-form-especializacion [guardar]=menuVars.crearEspecializacion (abrirMenu)="menuVars.crearEspecializacion=false"></app-form-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarEspecializacion;else listEspecializacion"></ng-container>
@@ -43,31 +49,31 @@
 <ng-container *ngIf="!menuVars.editarEspecializacion;else editEspecializacion"></ng-container>
 
 <ng-template #editEspecializacion>
-    <app-form-especializacion [editar]=menuVars.editarEspecializacion [id]=id (abrirTabla)="menuVars.editarEspecializacion=false"></app-form-especializacion>
+    <app-form-especializacion [editar]=menuVars.editarEspecializacion [id]=id (abrirMenu)="menuVars.editarEspecializacion=false"></app-form-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.crearPersonalMed;else createPersonalMed"></ng-container>
 
 <ng-template #createPersonalMed>  
-    <app-form-personal-med [guardar]=menuVars.crearPersonalMed></app-form-personal-med>
+    <app-form-personal-med [guardar]=menuVars.crearPersonalMed (abrirMenu)="menuVars.crearPersonalMed=false"></app-form-personal-med>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarPersonalMed;else listPersonalMed"></ng-container>
 
 <ng-template #listPersonalMed>  
-    <app-tabla-personal-med (enviarMenu)="editarPersonalMed($event)"></app-tabla-personal-med>
+    <app-tabla-personal-med (enviarMenu)="editarPersonalMed($event)" (abrirMenu)="menuVars.listarPersonalMed=false"></app-tabla-personal-med>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.editarPersonalMed;else editPersonalMed"></ng-container>
 
 <ng-template #editPersonalMed>
-    <app-form-personal-med [editar]=menuVars.editarPersonalMed [id]=id></app-form-personal-med>
+    <app-form-personal-med [editar]=menuVars.editarPersonalMed [id]=id (abrirMenu)="menuVars.editarPersonalMed=false"></app-form-personal-med>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.crearPaciente;else createPaciente"></ng-container>
 
 <ng-template #createPaciente>  
-    <app-form-paciente [guardar]=menuVars.crearPaciente (abrirTabla)="menuVars.crearPaciente=false"></app-form-paciente>
+    <app-form-paciente [guardar]=menuVars.crearPaciente (abrirMenu)="menuVars.crearPaciente=false"></app-form-paciente>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarPaciente;else listPaciente"></ng-container>
@@ -79,13 +85,13 @@
 <ng-container *ngIf="!menuVars.editarPaciente;else editPaciente" ></ng-container>
 
 <ng-template #editPaciente>
-    <app-form-paciente [editar]=menuVars.editarPaciente [id]=id (abrirTabla)="menuVars.editarPaciente=false"></app-form-paciente>
+    <app-form-paciente [editar]=menuVars.editarPaciente [id]=id (abrirMenu)="menuVars.editarPaciente=false"></app-form-paciente>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.crearHistoriaClinica;else createHistoriaClinica"></ng-container>
 
 <ng-template #createHistoriaClinica>  
-    <app-form-historia-clinica [guardar]=menuVars.crearHistoriaClinica (abrirTabla)="menuVars.crearHistoriaClinica=false"></app-form-historia-clinica>
+    <app-form-historia-clinica [guardar]=menuVars.crearHistoriaClinica (abrirMenu)="menuVars.crearHistoriaClinica=false"></app-form-historia-clinica>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarHistoriaClinica;else listHistoriaClinica"></ng-container>
@@ -97,6 +103,6 @@
 <ng-container *ngIf="!menuVars.editarHistoriaClinica;else editHistoriaClinica"></ng-container>
 
 <ng-template #editHistoriaClinica>
-    <app-form-historia-clinica [editar]=menuVars.editarHistoriaClinica [id]=id (abrirTabla)="menuVars.editarHistoriaClinica=false"></app-form-historia-clinica>
+    <app-form-historia-clinica [editar]=menuVars.editarHistoriaClinica [id]=id (abrirMenu)="menuVars.editarHistoriaClinica=false"></app-form-historia-clinica>
 </ng-template>
 

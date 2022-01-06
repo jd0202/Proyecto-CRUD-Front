@@ -16,17 +16,17 @@ export class MenuComponent implements OnInit {
   ngOnInit(){
   }
 
-  crearEspecializacion(){
+  crearEspecializacion(): void{
       this.menuVars.varsFalse();
       this.menuVars.crearEspecializacion=true;
   }
 
-  listarEspecializacion(){
+  listarEspecializacion(): void{
       this.menuVars.varsFalse();
       this.menuVars.listarEspecializacion=true;
   }
 
-  editarEspecializacion($event: any){
+  editarEspecializacion($event: any): void{
     this.id=parseInt($event);
     this.menuVars.varsFalse();
     this.menuVars.editarEspecializacion=true;
@@ -37,44 +37,44 @@ export class MenuComponent implements OnInit {
       this.menuVars.crearPersonalMed=true;
   }
 
-  listarPersonalMed(){
+  listarPersonalMed(): void{
       this.menuVars.varsFalse();
       this.menuVars.listarPersonalMed=true;
   }
 
-  editarPersonalMed($event: any){
+  editarPersonalMed($event: any): void{
       this.id=parseInt($event);
       this.menuVars.varsFalse();
       this.menuVars.editarPersonalMed=true;
   }
 
-  crearPaciente(){
+  crearPaciente(): void{
       this.menuVars.varsFalse();
       this.menuVars.crearPaciente=true;
   }
 
-  editarPaciente($event: any){
+  editarPaciente($event: any): void{
     this.id=parseInt($event);
     this.menuVars.varsFalse();
     this.menuVars.editarPaciente=true;
   }
 
-  listarPaciente(){
+  listarPaciente(): void{
       this.menuVars.varsFalse();
       this.menuVars.listarPaciente=true;
   }
 
-  crearHistoriaClinica(){
+  crearHistoriaClinica(): void{
       this.menuVars.varsFalse();
       this.menuVars.crearHistoriaClinica=true;
   }
 
-  listarHistoriaClinica(){
+  listarHistoriaClinica(): void{
       this.menuVars.varsFalse();
       this.menuVars.listarHistoriaClinica=true;
   }
 
-  editarHistoriaClinica($event: any){
+  editarHistoriaClinica($event: any): void{
       this.id=parseInt($event);
       this.menuVars.varsFalse();
       this.menuVars.editarHistoriaClinica=true;

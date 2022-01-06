@@ -25,7 +25,7 @@ export class TablaPacienteComponent implements OnInit {
   }
 
   obtenerPacientes(){
-    this.pacienteService.obtenerPacientes().subscribe(respuesta=>{this.paciente=respuesta},error=>{console.log("error")})
+    this.pacienteService.obtenerPacientes().subscribe(respuesta=>{this.paciente=respuesta},error=>{console.log("error")});
   }
 
   enviarEdicion(datos : Paciente){
@@ -35,7 +35,7 @@ export class TablaPacienteComponent implements OnInit {
   eliminar(){
     console.log(this.pacienteDelete.id)
     this.displayResponsive=false;
-    this.pacienteService.eliminarDatos(this.pacienteDelete.id).subscribe(respuesta=>{this.obtenerPacientes(),console.log(respuesta);},error=>{console.log("error ");})
+    this.pacienteService.eliminarDatos(this.pacienteDelete.id).subscribe(respuesta=>{this.obtenerPacientes(),console.log(respuesta);},error=>{console.log("error ");});
     this.abrirMenu.emit();
   }
 
