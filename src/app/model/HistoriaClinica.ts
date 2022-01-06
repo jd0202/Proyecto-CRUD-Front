@@ -11,6 +11,6 @@ export class HistoriaClinica{
     public examenFisico:  | undefined;
     public diagnostico:  | undefined;
     public tratamientoMedico:  | undefined;
-    public idPaciente: number | undefined;
     public idPersonalMed: number | undefined;
+    public idPaciente: number | undefined;
 }

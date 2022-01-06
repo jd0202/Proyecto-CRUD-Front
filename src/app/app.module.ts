@@ -23,6 +23,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
+import {DialogModule} from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -53,7 +55,9 @@ import {CalendarModule} from 'primeng/calendar';
     MatButtonModule,
     MatDividerModule,
     InputTextModule,
-    CalendarModule
+    CalendarModule,
+    DialogModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,10 +18,14 @@ export class HistoriaClinicaService {
 
   public obtenerHistoriaClinicaPorId(id: any){
     return this.http.get<any>("http://localhost:8080/historiaClinica/obtenerHistoriaClinicaPorId?id="+id);
-  }
+  } 
 
   public editarDatos(datos: any){
     return this.http.put<any>("http://localhost:8080/historiaClinica/editarHistoriaClinica", datos);
+  }
+
+  public eliminarDatos(id: any){
+    return this.http.delete<any>("http://localhost:8080/historiaClinica/borrarHistoriaClinica?id="+id);
   }
  
 }

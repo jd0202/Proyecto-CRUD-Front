@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Paciente } from '../model/Paciente';
 import { PacienteService } from '../service/paciente.service';
@@ -17,6 +17,7 @@ export class FormPacienteComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
+  @Output() abrirTabla = new EventEmitter<any>();
   
   formPaciente = new FormGroup({
     tipoDocumento: new FormControl('',Validators.required),
@@ -71,12 +72,13 @@ export class FormPacienteComponent implements OnInit, OnChanges {
     this.paciente.personalMedId=this.formPaciente.get("personalMedId")?.value;
 
     this.pacienteService.guardarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.abrirTabla.emit();
   }
 
   edit(): void{
 
     this.pacienteService.obtenerPacientePorId(this.id).subscribe(respuesta=>{
-      this.formPaciente.setValue({
+      this.formPaciente.patchValue({
         tipoDocumento: respuesta.tipoDocumento,
         cedula: respuesta.cedula,
         nombre1: respuesta.nombre1,
@@ -91,7 +93,6 @@ export class FormPacienteComponent implements OnInit, OnChanges {
         lugarNacimiento: respuesta.lugarNacimiento,
         religion: respuesta.religion,
         etnia: respuesta.etnia,
-        tipoPoblacion: respuesta.tipoPoblacion,
         ocupacion: respuesta.ocupacion,
         identidadGenero: respuesta.identidadGenero,
         sexo: respuesta.sexo,
@@ -123,6 +124,7 @@ export class FormPacienteComponent implements OnInit, OnChanges {
     this.paciente.personalMedId=this.formPaciente.get("personalMedId")?.value;
 
     this.pacienteService.editarDatos(this.paciente).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.abrirTabla.emit();
   }
 
 }

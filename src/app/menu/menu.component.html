@@ -31,19 +31,19 @@
 <ng-container *ngIf="!menuVars.crearEspecializacion;else createEspecializacion"></ng-container>
 
 <ng-template #createEspecializacion>  
-    <app-form-especializacion [guardar]=menuVars.crearEspecializacion></app-form-especializacion>
+    <app-form-especializacion [guardar]=menuVars.crearEspecializacion (abrirTabla)="menuVars.crearEspecializacion=false"></app-form-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarEspecializacion;else listEspecializacion"></ng-container>
 
 <ng-template #listEspecializacion>  
-    <app-tabla-especializacion (enviarMenu)="editarEspecializacion($event)"></app-tabla-especializacion>
+    <app-tabla-especializacion (enviarMenu)="editarEspecializacion($event)" (abrirMenu)="menuVars.listarEspecializacion=false"></app-tabla-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.editarEspecializacion;else editEspecializacion"></ng-container>
 
 <ng-template #editEspecializacion>
-    <app-form-especializacion [editar]=menuVars.editarEspecializacion [id]=id></app-form-especializacion>
+    <app-form-especializacion [editar]=menuVars.editarEspecializacion [id]=id (abrirTabla)="menuVars.editarEspecializacion=false"></app-form-especializacion>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.crearPersonalMed;else createPersonalMed"></ng-container>
@@ -67,36 +67,36 @@
 <ng-container *ngIf="!menuVars.crearPaciente;else createPaciente"></ng-container>
 
 <ng-template #createPaciente>  
-    <app-form-paciente [guardar]=menuVars.crearPaciente></app-form-paciente>
+    <app-form-paciente [guardar]=menuVars.crearPaciente (abrirTabla)="menuVars.crearPaciente=false"></app-form-paciente>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarPaciente;else listPaciente"></ng-container>
 
 <ng-template #listPaciente>  
-    <app-tabla-paciente (enviarMenu)="editarPaciente($event)"></app-tabla-paciente>
+    <app-tabla-paciente (enviarMenu)="editarPaciente($event)" (abrirMenu)="menuVars.listarPaciente=false"></app-tabla-paciente>
 </ng-template>
 
-<ng-container *ngIf="!menuVars.editarPaciente;else editPaciente"></ng-container>
+<ng-container *ngIf="!menuVars.editarPaciente;else editPaciente" ></ng-container>
 
 <ng-template #editPaciente>
-    <app-form-paciente [editar]=menuVars.editarPaciente [id]=id></app-form-paciente>
+    <app-form-paciente [editar]=menuVars.editarPaciente [id]=id (abrirTabla)="menuVars.editarPaciente=false"></app-form-paciente>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.crearHistoriaClinica;else createHistoriaClinica"></ng-container>
 
 <ng-template #createHistoriaClinica>  
-    <app-form-historia-clinica [guardar]=menuVars.crearHistoriaClinica></app-form-historia-clinica>
+    <app-form-historia-clinica [guardar]=menuVars.crearHistoriaClinica (abrirTabla)="menuVars.crearHistoriaClinica=false"></app-form-historia-clinica>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.listarHistoriaClinica;else listHistoriaClinica"></ng-container>
 
 <ng-template #listHistoriaClinica>  
-    <app-tabla-historia-clinica (enviarMenu)="editarHistoriaClinica($event)"></app-tabla-historia-clinica>
+    <app-tabla-historia-clinica (enviarMenu)="editarHistoriaClinica($event)" (abrirMenu)="menuVars.listarHistoriaClinica=false"></app-tabla-historia-clinica>
 </ng-template>
 
 <ng-container *ngIf="!menuVars.editarHistoriaClinica;else editHistoriaClinica"></ng-container>
 
 <ng-template #editHistoriaClinica>
-    <app-form-historia-clinica [editar]=menuVars.editarHistoriaClinica [id]=id></app-form-historia-clinica>
+    <app-form-historia-clinica [editar]=menuVars.editarHistoriaClinica [id]=id (abrirTabla)="menuVars.editarHistoriaClinica=false"></app-form-historia-clinica>
 </ng-template>
 

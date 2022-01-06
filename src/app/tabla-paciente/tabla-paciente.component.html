@@ -6,8 +6,10 @@
             <th>Id</th>
             <th>Tipo de documento</th>
             <th>Numero de documento</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Primer Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
             <th>Telefono</th>
             <th>Email</th>
             <th>Estado Civil</th>
@@ -29,8 +31,10 @@
             <td>{{paciente.id}}</td>
             <td>{{paciente.tipoDocumento}}</td>
             <td>{{paciente.cedula}}</td>
-            <td>{{paciente.nombre}}</td>
-            <td>{{paciente.apellido}}</td>
+            <td>{{paciente.nombre1}}</td>
+            <td>{{paciente.nombre2}}</td>
+            <td>{{paciente.apellido1}}</td>
+            <td>{{paciente.apellido2}}</td>
             <td>{{paciente.telefono}}</td>
             <td>{{paciente.email}}</td>
             <td>{{paciente.estadoCivil}}</td>
@@ -45,8 +49,16 @@
             <td>{{paciente.sexo}}</td>
             <td>{{paciente.personalMedId}}</td>
             <td>
-                <button (click)="enviarEdicion(paciente)">Editar</button>
-                <button>Eliminar</button>
+                <button pButton pRipple style="background-color: rgb(71, 167, 71);" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="enviarEdicion(paciente)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="showResponsiveDialog(paciente)"></button>
+                <p-dialog header="Advertencia" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+                    [draggable]="false" [resizable]="false">
+                    <p>Esta seguro que desea eliminar este registro, esta accion no se podra revertir, desea continuar?</p>
+                        <ng-template pTemplate="footer">
+                        <p-button (click)="displayResponsive=false" label="No" styleClass="p-button-text"></p-button>
+                        <p-button (click)="eliminar()" label="Yes" styleClass="p-button-text"></p-button>
+                        </ng-template>
+                </p-dialog>
             </td>
         </tr>
     </ng-template>

@@ -23,4 +23,8 @@ export class PacienteService {
   public editarDatos(datos : any){
     return this.http.put<any>("http://localhost:8080/paciente/editarPaciente",datos);
   }
+
+  public eliminarDatos(id : any){
+    return this.http.delete<any>("http://localhost:8080/paciente/borrarPaciente?id="+id);
+  }
 }

@@ -23,4 +23,8 @@ export class EspecializacionService {
   public editarDatos(datos : any){
     return this.http.put<any>("http://localhost:8080/especializacion/editarEspecializacion", datos);
   }
+
+  public eliminarDatos(id : any){
+    return this.http.delete<any>("http://localhost:8080/especializacion/borrarEspecializacion?id="+id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HistoriaClinica } from '../model/HistoriaClinica';
 import { HistoriaClinicaService } from '../service/historia-clinica-service';
@@ -17,6 +17,7 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
+  @Output() abrirTabla = new EventEmitter<any>();
 
   formHistoriaClinica = new FormGroup({
     cedula: new FormControl('',Validators.required),
@@ -79,7 +80,7 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
     this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
 
     this.historiaClinicaService.guardarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
-    
+    this.abrirTabla.emit();
   }
 
   editarDatos(){
@@ -99,6 +100,7 @@ export class FormHistoriaClinicaComponent implements OnInit, OnChanges {
     this.historiaClinica.idPersonalMed=this.formHistoriaClinica.get("idPersonalMed")?.value;
 
     this.historiaClinicaService.editarDatos(this.historiaClinica).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.abrirTabla.emit();
   }
 
 }

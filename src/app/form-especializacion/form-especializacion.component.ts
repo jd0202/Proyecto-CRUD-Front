@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Especializacion } from '../model/Especializacion';
 import { EspecializacionService } from '../service/especializacion.service';
@@ -17,6 +17,7 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
   @Input() public guardar: boolean = false;
   @Input() public editar: boolean = false;
   @Input() public id : number = 0;
+  @Output() abrirTabla = new EventEmitter<any>();
   
   formEspecializacion = new FormGroup({
     nombre: new FormControl('',Validators.required)
@@ -36,6 +37,7 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
     this.especializacion.especializacion=this.formEspecializacion.get("nombre")?.value;
 
     this.especializacionService.guardarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.abrirTabla.emit();
   }
 
   edit(): void{
@@ -51,5 +53,6 @@ export class FormEspecializacionComponent implements OnInit, OnChanges {
     this.especializacion.especializacion=this.formEspecializacion.get("nombre")?.value;
 
     this.especializacionService.editarDatos(this.especializacion).subscribe(respuesta=>{console.log(respuesta);},error=>{console.log("error");})
+    this.abrirTabla.emit();
   }
 }

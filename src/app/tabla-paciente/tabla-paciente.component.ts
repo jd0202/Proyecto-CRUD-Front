@@ -12,8 +12,13 @@ export class TablaPacienteComponent implements OnInit {
   constructor(private pacienteService: PacienteService) { }
 
   @Output() enviarMenu = new EventEmitter<number>();
+  @Output() abrirMenu= new EventEmitter<any>();
+
+  public displayResponsive: boolean | undefined;
 
   public paciente: Paciente[] = new Array<Paciente>();
+
+  public pacienteDelete: Paciente = new Paciente();
 
   ngOnInit(): void {
     this.obtenerPacientes();
@@ -25,6 +30,18 @@ export class TablaPacienteComponent implements OnInit {
 
   enviarEdicion(datos : Paciente){
     this.enviarMenu.emit(datos.id);
+  }
+
+  eliminar(){
+    console.log(this.pacienteDelete.id)
+    this.displayResponsive=false;
+    this.pacienteService.eliminarDatos(this.pacienteDelete.id).subscribe(respuesta=>{this.obtenerPacientes(),console.log(respuesta);},error=>{console.log("error ");})
+    this.abrirMenu.emit();
+  }
+
+  showResponsiveDialog(paciente: Paciente){
+    this.displayResponsive=true;
+    this.pacienteDelete=paciente;
   }
 
 }
